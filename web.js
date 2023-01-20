@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-const LAYOUT_CONFIG_KEY = "layoutConfig";
+const LAYOUT_CONFIG_KEY = 'layoutConfig';
 
-const initialProgram = `#include <stdio.h>
+const initialProgram =
+`#include <stdio.h>
 
 int main(void)
 {
@@ -35,25 +36,23 @@ function initLayout() {
       showPopoutIcon: false,
       showMaximiseIcon: false,
     },
-    content: [
-      {
-        type: "stack",
-        content: [
-          {
-            type: "component",
-            componentName: "editor",
-            componentState: { fontSize: 18, value: initialProgram },
-            isClosable: false,
-          },
-          {
-            type: "component",
-            componentName: "terminal",
-            componentState: { fontSize: 18 },
-            isClosable: false,
-          },
-        ],
-      },
-    ],
+    content: [{
+      type: 'row',
+      content: [{
+        type: 'component',
+        componentName: 'editor',
+        componentState: {fontSize: 18, value: initialProgram},
+        isClosable: false,
+      }, {
+        type: 'stack',
+        content: [{
+          type: 'component',
+          componentName: 'terminal',
+          componentState: {fontSize: 18},
+          isClosable: false,
+        }, ]
+      }]
+    }]
   };
 
   layout = new Layout({
@@ -61,12 +60,12 @@ function initLayout() {
     defaultLayoutConfig,
   });
 
-  layout.on("initialised", (event) => {
+  layout.on('initialised', event => {
     // Editor stuff
     editor.commands.addCommand({
-      name: "run",
-      bindKey: { win: "Ctrl+Enter", mac: "Command+Enter" },
-      exec: run,
+      name: 'run',
+      bindKey: {win: 'Ctrl+Enter', mac: 'Command+Enter'},
+      exec: run
     });
   });
 
@@ -74,7 +73,7 @@ function initLayout() {
 }
 
 function resetLayout() {
-  sessionStorage.removeItem("layoutConfig");
+  sessionStorage.removeItem('layoutConfig');
   if (layout) {
     layout.destroy();
     layout = null;
@@ -83,9 +82,8 @@ function resetLayout() {
 }
 
 // Toolbar stuff
-$("#reset").on("click", (event) => {
-  if (confirm("真的要重置吗？")) resetLayout();
-});
-$("#run").on("click", (event) => run(editor));
+$('#reset').on('click', event => { if (confirm('真的要重置吗？')) resetLayout() });
+$('#run').on('click', event => run(editor));
+
 
 initLayout();
