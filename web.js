@@ -40,15 +40,15 @@ function initLayout() {
       type: 'stack',
       content: [{
         type: 'component',
+        componentName: 'terminal',
+        componentState: {fontSize: 18},
+        isClosable: false,
+    },{
+        type: 'component',
         componentName: 'editor',
         componentState: {fontSize: 18, value: initialProgram},
         isClosable: false,
-      }, {
-          type: 'component',
-          componentName: 'terminal',
-          componentState: {fontSize: 18},
-          isClosable: false,
-      }]
+      }, ]
     }]
   };
 
