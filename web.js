@@ -37,7 +37,7 @@ function initLayout() {
       showMaximiseIcon: false,
     },
     content: [{
-      type: 'column',
+      type: 'stack',
       content: [{
         type: 'component',
         componentName: 'editor',
