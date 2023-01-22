@@ -44,13 +44,10 @@ function initLayout() {
         componentState: {fontSize: 18, value: initialProgram},
         isClosable: false,
       }, {
-        type: 'stack',
-        content: [{
           type: 'component',
           componentName: 'terminal',
           componentState: {fontSize: 18},
           isClosable: false,
-        }, ]
       }]
     }]
   };
